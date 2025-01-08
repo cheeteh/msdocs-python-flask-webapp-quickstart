@@ -86,7 +86,10 @@ stages:
           #     azureSubscription: $(azureServiceConnectionId)
           #     appName: $(webAppName)
           #     package: $(Pipeline.Workspace)/drop/$(Build.BuildId).zip
-                    
+          - script: |
+                export NODE_TLS_REJECT_UNAUTHORIZED=0
+            displayName: 'Disable SSL verification for deployment'
+
           - task: AzureWebApp@1
             inputs:
               azureSubscription: 'Azure subscription 1 (eae93285-6796-495c-a0d6-4b1a1446a7c1)'
