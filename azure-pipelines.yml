@@ -30,7 +30,8 @@ stages:
   jobs:
   - job: BuildJob
     pool:
-      vmImage: $(vmImageName)
+      # vmImage: $(vmImageName)
+      name: personal-local
     steps:
     - task: UsePythonVersion@0
       inputs:
@@ -66,7 +67,8 @@ stages:
   jobs:
   - deployment: DeploymentJob
     pool:
-      vmImage: $(vmImageName)
+      # vmImage: $(vmImageName)
+      name: personal-local
     environment: $(environmentName)
     strategy:
       runOnce:
